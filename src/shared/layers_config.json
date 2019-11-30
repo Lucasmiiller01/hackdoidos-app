@@ -1,0 +1,95 @@
+{
+  "Camadas": [
+    {
+      "name": "estacoestratamento_elevatoria",
+      "tipo": "shape",
+      "title": "Estações tratamento e elevatória",
+      "legenda": [
+        {
+          "icon": "triangle",
+          "color": "green",
+          "title": "Elevatória"
+        },
+        {
+          "icon": "pentagon",
+          "color": "#D7DF01",
+          "title": "Lodos Ativados(Convencional/Deep Shaft)"
+        },
+        {
+          "icon": "square",
+          "color": "#00FFFF",
+          "title": "Primário"
+        }
+      ],
+      "zindex": "2"
+    },
+    {
+      "name": "pontos_completo_e_bairros",
+      "tipo": "shape",
+      "title": "Condomínios não ligados a rede",
+      "legenda": [
+        {
+          "icon": "circle",
+          "color": "green",
+          "title": "Pontos"
+        }
+      ],
+      "zindex": "2"
+    },
+    {
+      "name": "pontos_de_lancamento",
+      "tipo": "shape",
+      "title": "Pontos de Lançamento",
+      "legenda": [
+        {
+          "icon": "cards-diamond",
+          "color": "#D7DF01",
+          "title": "Lançamento"
+        }
+      ],
+      "zindex": "2"
+    },
+    {
+      "name": "saneamento",
+      "tipo": "shape",
+      "title": "Saneamento",
+      "commun": true,
+      "legenda": [
+        {
+          "icon": "linear-scale",
+          "color": "purple",
+          "title": "Licenciamento"
+        },
+        {
+          "icon": "linear-scale",
+          "color": "red",
+          "title": "Paralisada"
+        },
+        {
+          "icon": "linear-scale",
+          "color": "#D7DF01",
+          "title": "Em Execução"
+        },
+        {
+          "icon": "linear-scale",
+          "color": "blue",
+          "title": "Concluído"
+        }
+      ],
+      "zindex": "2"
+    },
+    {
+      "name": "reports",
+      "tipo": "shape",
+      "title": "Denuncias",
+      "legenda": [
+        {
+          "icon": "circle",
+          "color": "red",
+          "title": "Denuncias"
+        }
+      ],
+      "zindex": "2"
+    }
+  ]
+}

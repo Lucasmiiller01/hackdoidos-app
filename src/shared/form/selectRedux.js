@@ -68,7 +68,7 @@ export default class SelectDialogRedux extends PureComponent {
                       <View style={styles.row}>
                       <View pointerEvents="none">
                           <RadioButton
-                            color="#ef6c00"
+                            color="#4c88d6"
                             value={option.value}
                             status={this.isChecked(option.value)}
                           />

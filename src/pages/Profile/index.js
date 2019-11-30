@@ -5,10 +5,7 @@ import { View, StyleSheet } from 'react-native';
 import { Appbar, Avatar, Text, Button } from 'react-native-paper';
 
 import { connect } from 'react-redux';
-import { toggleModalPassword } from '../../store/ducks/profile'
 import { logout } from '../../store/ducks/auth'
-
-import moment from 'moment';
 
 import sourceEmptyProfile from '../../shared/imgs/empty-profile.png'
 
@@ -22,7 +19,7 @@ class Profile extends Component {
 
   render() {
 
-    const { loaded, profile, error, toggleModalPassword } = this.props;
+    const { loaded, profile, error } = this.props;
 
     return (
       <View style={styles.container}>
@@ -39,21 +36,8 @@ class Profile extends Component {
               source={sourceEmptyProfile}
             />
 
-            <Text style={{ fontSize: 20, textAlign: 'center' }}>{profile.user_proper_name || profile.username}</Text>
-
-            <View style={{ marginVertical: 20 }}>
-              <Text style={{ fontSize: 14, color: '#333', textAlign: 'center' }}>
-                Ultimo Acesso
-            </Text>
-
-              <Text style={{ fontSize: 16, textAlign: 'center', marginTop: 5 }}>
-                {moment(profile.last_login).format('LLL')}
-              </Text>
-            </View>
-
-            <Button icon="lock" onPress={() => toggleModalPassword(true)}>
-              Alterar Senha
-          </Button>
+            <Text style={{ fontSize: 20, textAlign: 'center' }}>{profile.name}</Text>
+            
           </>
         ) : (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -71,4 +55,4 @@ const mapStateToProps = state => ({
   error: state.auth.error
 });
 
-export default connect(mapStateToProps, { toggleModalPassword, logout })(Profile);
+export default connect(mapStateToProps, { logout })(Profile);

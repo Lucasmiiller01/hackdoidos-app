@@ -22,6 +22,8 @@ function* login(action) {
       put(NavigationActions.navigate({routeName: 'PrivateStack'})),
     ]);
   } catch (err) {
+
+    console.log(err)
     yield all([
       put(snackbarShowError('Usuário e senha incorreto.')),
       put(stopSubmit('LOGIN')),

@@ -40,20 +40,29 @@ const MainStack = createStackNavigator({
 
 const PrivateStack = createMaterialBottomTabNavigator(
   {
-    Main: MainStack,
+    MoreInfo: {
+      screen: ReportsScreen,
+      navigationOptions: {
+        tabBarLabel: <Text style={{ textAlign: 'center' }}>Informações</Text>,
+        tabBarIcon: ({ tintColor }) => (
+          <Icon name="info" size={24} color={tintColor} />
+        ),
+      },
+    },
     Reports: {
       screen: ReportsScreen,
       navigationOptions: {
-        tabBarLabel: <Text style={{ textAlign: 'center' }}>Denuncias</Text>,
+        tabBarLabel: <Text style={{ textAlign: 'center' }}>Ocorrências</Text>,
         tabBarIcon: ({ tintColor }) => (
           <Icon name="description" size={24} color={tintColor} />
         ),
       },
     },
+    Main: MainStack,
     Profile: {
       screen: ProfileScreen,
       navigationOptions: {
-        tabBarLabel: <Text style={{ textAlign: 'center' }}>Perfil</Text>,
+        tabBarLabel: <Text style={{ textAlign: 'center' }}>Sintomas</Text>,
         tabBarIcon: ({ tintColor }) => (
           <Icon name="person" size={24} color={tintColor} />
         ),
@@ -62,7 +71,7 @@ const PrivateStack = createMaterialBottomTabNavigator(
   },
   {
     initialRouteName: 'Main',
-    activeColor: '#ef6c00',
+    activeColor: '#4c88d6',//#4c88d6
     inactiveColor: '#666',
     barStyle: {
       backgroundColor: '#FFF',

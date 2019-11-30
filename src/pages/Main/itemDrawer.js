@@ -22,7 +22,7 @@ const ItemDrawer = ({ item }) => {
                     {item.title}
                 </Text>
                 <Switch
-                    color={"#ef6c00"}
+                    color={"#4c88d6"}
                     value={enable}
                     onValueChange={() => enable ? dispatch({ type: typesMain.ASYNC_REMOVE_SELECTED_LAYER, payload: item.name }) : dispatch({ type: typesMain.ASYNC_ADD_SELECTED_LAYER, payload: item.name })}
                 />

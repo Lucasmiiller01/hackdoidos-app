@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-//import { AppWithNavigationState } from "./navigator-redux";
 import {AppWithNavigationState} from './navigator-redux';
 
 import {connect} from 'react-redux';

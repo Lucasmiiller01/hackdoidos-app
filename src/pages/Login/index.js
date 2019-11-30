@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import {
   Text, StyleSheet, View, KeyboardAvoidingView, Keyboard, Animated, TouchableOpacity
 } from 'react-native';
-import MapView from 'react-native-maps';
+
 import { connect } from "react-redux";
 import { login as Login } from "../../store/ducks/auth";
 import { bindActionCreators } from "redux";
@@ -137,7 +137,7 @@ class formLogin extends Component {
   };*/
 
   renderBtnLogin() {
-    const { Login, handleSubmit, submitting, navigation } = this.props;
+    const { Login, handleSubmit, submitting } = this.props;
     if (submitting) return <Loading text="validando credencias ..." />
     return (
 
@@ -146,7 +146,7 @@ class formLogin extends Component {
         style={{
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#ef6c00",
+          backgroundColor: "#4c88d6",
           width: 300,
           height: 40,
           zIndex: 50,
@@ -193,7 +193,7 @@ class formLogin extends Component {
                 colors: {
                   placeholder: '#FFFFFF', text: '#FFFFFF', primary: '#FFFFFF',
                   underlineColor: 'transparent',
-                  background: "#ef6c00"
+                  background: "#4c88d6"
                 }
               }}
               autoFocus
@@ -211,7 +211,7 @@ class formLogin extends Component {
                 colors: {
                   placeholder: '#FFF', text: '#000', primary: '#FFF',
                   underlineColor: 'transparent',
-                  background: "#ef6c00"
+                  background: "#4c88d6"
                 }
               }}
               name="password"
@@ -226,7 +226,7 @@ class formLogin extends Component {
           </KeyboardAvoidingView>
           {this.renderBtnLogin()}
 
-          <Text style={{ fontSize: 16, marginVertical: 6, fontWeight: "bold", color: "#ef6c00" }}>OU</Text>
+          <Text style={{ fontSize: 16, marginVertical: 6, fontWeight: "bold", color: "#4c88d6" }}>OU</Text>
           <GoogleSigninButton
             style={{
               width: 300, height: 50, borderRadius: 5

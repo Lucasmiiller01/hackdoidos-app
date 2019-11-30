@@ -17,9 +17,9 @@ export default ({ text, size = "large", noStyle }) => {
                     : { marginVertical: 10 }
             }
         >
-            <ActivityIndicator size={size} color="#ef6c00" />
+            <ActivityIndicator size={size} color="#4c88d6" />
             {text && (
-                <Text style={{ color: "#ef6c00", fontSize: 18, marginTop: 5 }}>
+                <Text style={{ color: "#4c88d6", fontSize: 18, marginTop: 5 }}>
                     {text}
                 </Text>
             )}

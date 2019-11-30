@@ -3,19 +3,12 @@ import React, { useCallback } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Fab, Icon } from 'native-base';
 import { Paragraph, Portal } from 'react-native-paper';
-import IconCommun from 'react-native-vector-icons/MaterialCommunityIcons';
-import { types as typesMain } from "../../store/ducks/main"
 
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 import Drawer from "./drawer";
-import SanitationPolygons from "../Maps/Polygons/sanitation";
-import MarkersReports from "../Maps/Point/reports";
-import MarkersReleasePoints from "../Maps/Point/releasePoints";
-import MarkersCondosPoints from "../Maps/Point/condosPoints";
-import MarkersTreatmentStations from "../Maps/Point/treatmentStations";
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const styles = StyleSheet.create({
   container: {
@@ -27,11 +20,9 @@ const styles = StyleSheet.create({
   fab: {
     opacity: 1,
     position: 'absolute',
-    //margin: 16,
     right: 0,
     bottom: 0,
-    backgroundColor: '#ef6c00',
-    //backgroundColor: 'red',
+    backgroundColor: '#4c88d6',
     zIndex: 9999,
   },
 
@@ -46,7 +37,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Main = ({ navigation }) => {
+const Main = ({ navigation }) => {  
   const [addAvailable, setAddAvailable] = React.useState(false);
   const openModal = useSelector(state => state.main.openModal);
   const stylesFab = [styles.fab];
@@ -54,8 +45,6 @@ const Main = ({ navigation }) => {
   if (addAvailable) {
     stylesFab.push(styles.fabClose);
   }
-
-  const dispatch = useDispatch();
 
   const callActionPressOnMapView = useCallback(e => {
     if (addAvailable) {
@@ -70,6 +59,7 @@ const Main = ({ navigation }) => {
       });
     }
   });
+
   return (
     <Portal.Host>
       <View style={styles.container}>
@@ -98,21 +88,10 @@ const Main = ({ navigation }) => {
             longitudeDelta: 0.05,
           }}
           onPress={callActionPressOnMapView}>
-          <SanitationPolygons />
-          <MarkersReports />
-          <MarkersReleasePoints />
-          <MarkersCondosPoints />
-          <MarkersTreatmentStations />
+
         </MapView>
         <Drawer />
 
-        <Fab
-          style={{ marginBottom: 80, backgroundColor: "#ef6c00", zIndex: 10 }}
-          position="bottomRight"
-          onPress={() => dispatch({ type: typesMain.CHANGE_MODAL_DRAWER, payload: !openModal })}>
-
-          <IconCommun name="layers" style={{ color: "#FFF" }} size={20} />
-        </Fab>
         <Fab
           style={stylesFab}
           position="bottomRight"

@@ -10,7 +10,7 @@ import inputRedux from '../../shared/form/inputRedux';
 import {reduxForm, Field} from 'redux-form';
 import { createReport } from '../../store/ducks/createReports';
 
-const FormCreateReport = ({submitting, handleSubmit, coordinate}) => {
+const FormCreateOccurrence = ({submitting, handleSubmit, coordinate}) => {
 
   const dispatch = useDispatch();
   const submitCreateReport = useCallback((values) => dispatch(
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
 
 export default reduxForm({
   form: 'FORM_CREATE_REPORT',
-})(FormCreateReport);
+})(FormCreateOccurrence);

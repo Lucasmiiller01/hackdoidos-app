@@ -7,7 +7,7 @@ import {Appbar, Paragraph} from 'react-native-paper';
 
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 
-import FormCreateReport from './form';
+import FormCreateOccurrence from './form';
 import {ScrollView} from 'react-native-gesture-handler';
 
 const CreateReport = ({navigation}) => {
@@ -22,29 +22,8 @@ const CreateReport = ({navigation}) => {
         <Appbar.Content title="Nova Denuncia" />
       </Appbar.Header>
 
-      {coordinate && (
-        <View>
-          <MapView
-            provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-            style={styles.map}
-            mapType="satellite"
-            rotateEnabled={false}
-            toolbarEnabled={false}
-            initialRegion={{
-              latitude: coordinate.latitude,
-              longitude: coordinate.longitude,
-              latitudeDelta: 0.00043,
-              longitudeDelta: 0.00034,
-            }}>
-            <Marker coordinate={coordinate} />
-          </MapView>
-          <Paragraph style={styles.locationSelected}>
-            Local Selecionado
-          </Paragraph>
-        </View>
-      )}
       <ScrollView>
-        <FormCreateReport coordinate={coordinate} />
+        <FormCreateOccurrence coordinate={coordinate} />
       </ScrollView>
     </View>
   );

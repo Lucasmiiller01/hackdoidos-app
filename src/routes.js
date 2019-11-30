@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import MainScreen from './pages/Main';
 import ProfileScreen from './pages/Profile';
 import ReportsScreen from './pages/Reports';
-import CreateReport from './pages/CreateReport';
+import CreateReport from './pages/CreateOccurrence';
 
 import Login from './pages/Login';
 

@@ -25,6 +25,7 @@ import PageInfo from './pages/PageInfo';
 import PageInfo2 from './pages/PageInfo/adverte';
 
 
+
 const MainStack = createStackNavigator({
   Main: {
     screen: MainScreen,
@@ -107,7 +108,7 @@ const Routes = createAppContainer(
       SymptomsScreen3,
       SymptomsScreen4,
       SymptomsScreenEnd,
-      PageInfo2
+      PageInfo2,
 
     },
     {

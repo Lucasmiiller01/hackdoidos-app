@@ -53,7 +53,7 @@ class Main extends Component {
         </View>
 
         <Divider/>
-        {['As diferenças entre vetores', 'Ações de Controle', 'Sintomas de arboviroses'].map((text, key) => (
+        {['As diferenças entre vetores', 'Eliminando focos de mosquito', 'Sintomas de arboviroses'].map((text, key) => (
           <TouchableOpacity style={styles.row} onPress={() => this.props.navigation.navigate({
             routeName: 'PageInfo',
             params: {

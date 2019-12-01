@@ -175,7 +175,7 @@ class formLogin extends Component {
       <View style={styles.container}>
 
         <View style={{ alignSelf: "center", marginTop: 40, zIndex: 22, opacity: 1 }}>
-          <Text style={{ fontSize: 30, color: "#4c88d6" }}>Arbo Viroses</Text>
+          <Text style={{ fontSize: 30, color: "#4c88d6" }}>Arboviroses</Text>
         </View>
 
       

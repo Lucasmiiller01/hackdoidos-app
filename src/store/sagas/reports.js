@@ -56,6 +56,7 @@ function* fetchNewReport({payload}) {
     yield call(services.createReport, { ...locationCoord, ...payload });
 
     yield all([
+      
       put(snackbarShowSuccess('Ocorrencia criada com sucesso')),
       put(NavigationActions.navigate({ routeName: 'CreateOccurrenceCamera' }))
     ]);

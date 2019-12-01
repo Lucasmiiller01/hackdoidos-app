@@ -15,8 +15,10 @@ function* login(action) {
   Keyboard.dismiss();
 
   try {
-    
+    console.tron.log(action.payload);
     const {data} = yield call(service.login, action.payload);
+    console.tron.log(data);
+
     yield call(service.setAuthStorage, data);
     yield all([
       put(stopSubmit('LOGIN')),
@@ -26,7 +28,7 @@ function* login(action) {
     ]);
   } catch (err) {
 
-    console.log(err)
+    console.tron.log(err.message)
     yield all([
       put(snackbarShowError('Usuário e senha incorreto.')),
       put(stopSubmit('LOGIN')),

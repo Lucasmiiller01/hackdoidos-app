@@ -12,6 +12,7 @@ import { reduxForm, Field } from "redux-form";
 import Loading from "../../shared/loading";
 import InputRedux from "../../shared/form/inputRedux";
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
+import MapView from 'react-native-maps';
 
 const styles = StyleSheet.create({
   container: {
@@ -239,6 +240,19 @@ class formLogin extends Component {
             disabled={this.props.submitting} />
 
         </View>
+        <MapView
+          style={styles.map}
+          scrollEnabled={false}
+          zoomEnabled={false}
+          rotateEnabled={false}
+         // mapType="satellite"
+          region={{
+            latitude: -22.979744,
+            longitude: -43.365654,
+            latitudeDelta: 0.05,
+            longitudeDelta: 0.05,
+          }}
+        />
 
       </View>
 

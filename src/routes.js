@@ -9,7 +9,13 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import MainScreen from './pages/Main';
-import ProfileScreen from './pages/Profile';
+import SymptomsScreen from './pages/Symptoms';
+import SymptomsScreen1 from './pages/Symptoms/fase1';
+import SymptomsScreen2 from './pages/Symptoms/fase2';
+import SymptomsScreen3 from './pages/Symptoms/fase3';
+import SymptomsScreen4 from './pages/Symptoms/fase4';
+import SymptomsScreenEnd from './pages/Symptoms/end';
+
 import ReportsScreen from './pages/Reports';
 import CreateOccurrenceCameraScreen from './pages/CreateReport';
 import CreateOccurrenceScreen from './pages/CreateReport/form'
@@ -70,7 +76,7 @@ const PrivateStack = createMaterialBottomTabNavigator(
     Reports: CreateOccurrenceStack,
     Main: MainStack,
     Profile: {
-      screen: ProfileScreen,
+      screen: SymptomsScreen,
       navigationOptions: {
         tabBarLabel: <Text style={{ textAlign: 'center' }}>Sintomas</Text>,
         tabBarIcon: ({ tintColor }) => (
@@ -94,7 +100,13 @@ const Routes = createAppContainer(
     {
       Login,
       PrivateStack,
-      PageInfo
+      PageInfo,
+      SymptomsScreen1,
+      SymptomsScreen2,
+      SymptomsScreen3,
+      SymptomsScreen4,
+      SymptomsScreenEnd
+
     },
     {
       initialRouteName: 'Login',

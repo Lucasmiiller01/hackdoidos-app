@@ -44,7 +44,7 @@ function* fetchNewReport({payload}) {
 
     yield all([
       put(snackbarShowSuccess('Ocorrencia criada com sucesso')),
-      put(NavigationActions.navigate({ routeName: 'Main' }))
+      put(NavigationActions.navigate({ routeName: 'CreateOccurrenceCamera' }))
     ]);
 
   } catch (err) {

@@ -12,30 +12,38 @@ class Symptoms extends Component {
     return (
       <Container>
 
-       
-        <Text style={{color: "#4c88d6", textAlign: "center", fontSize: 22, marginTop: 20}}> Dor de cabeça ? </Text>
-        <View style={{justifyContent: "center", alignItems: "center", marginTop:50}}>
-          <Image source={InfoImg}/>
-          <View style={{flexDirection: 'row', justifyContent: "center", marginVertical: 20, marginTop: 50}}>
-          <View  style={{backgroundColor: "#4c88d6", borderRadius: 20, marginHorizontal: 20}}>
 
-            <IconButton
-              icon="close"
-              color={"#FFF"}
-              size={50}
-              onPress={() =>this.props.navigation.navigate({routeName: 'SymptomsScreenEnd'})}            />
-          </View>
+        <Text style={{ color: "#4c88d6", textAlign: "center", fontSize: 22, marginTop: 20 }}> Dor de cabeça ? </Text>
+        <View style={{ justifyContent: "center", alignItems: "center", marginTop: 50 }}>
+          <Image source={InfoImg} />
+          <View style={{ flexDirection: 'row', justifyContent: "center", marginVertical: 20, marginTop: 50 }}>
+            <View style={{ backgroundColor: "#4c88d6", borderRadius: 20, marginHorizontal: 20 }}>
 
-            <View  style={{backgroundColor: "#4c88d6", borderRadius: 20 }}>
               <IconButton
-                  icon="check-bold"
-                  color={"#FFF"}
-                  size={50}
-                  onPress={() =>this.props.navigation.navigate({routeName: 'SymptomsScreenEnd'})}              />
+                icon="close"
+                color={"#FFF"}
+                size={50}
+                onPress={() => this.props.navigation.navigate({
+                  routeName: 'Main', params: {
+                    resultTest: true
+                  }
+                })} />
             </View>
 
-          
+            <View style={{ backgroundColor: "#4c88d6", borderRadius: 20 }}>
+              <IconButton
+                icon="check-bold"
+                color={"#FFF"}
+                size={50}
+                onPress={() => this.props.navigation.navigate({
+                  routeName: 'Main', params: {
+                    resultTest: true
+                  }
+                })} />
             </View>
+
+
+          </View>
 
         </View>
       </Container>

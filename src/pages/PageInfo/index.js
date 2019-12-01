@@ -6,16 +6,19 @@ import { connect } from 'react-redux';
 
 import { ScrollView, Image } from 'react-native';
 import InfoImg from "../../shared/imgs/info.png"
+
 class PageInfo extends Component {
 
   render() {
+
+    const goBackTo = this.props.navigation.getParam('goBackTo', 'MoreInfo')
     return (
       <Container>
 
         <Appbar.Header dark={true}>
-            <Appbar.BackAction  onPress={() =>  this.props.navigation.navigate({
-      routeName: 'MoreInfo'
-    })} />
+          <Appbar.BackAction  onPress={() =>  this.props.navigation.navigate({
+            routeName: goBackTo
+          })} />
 
           <Appbar.Content title="Aedes x Culex" />
           <Appbar.Action icon="exit-to-app" onPress={() => this.props.logout()} />
@@ -29,8 +32,6 @@ class PageInfo extends Component {
     );
   }
 }
-
-
 
 
 

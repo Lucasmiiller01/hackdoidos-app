@@ -83,7 +83,7 @@ class Main extends Component {
 
         {['Advertências da secretária de saúde', 'Como se Prevenir', 'Como Identificar os Focos'].map((text, key) => (
           <TouchableOpacity style={styles.row} onPress={() => this.props.navigation.navigate({
-            routeName: 'PageInfo',
+            routeName: text === 'Advertências da secretária de saúde' ?'PageInfo2' : 'PageInfo',
             params: {
               goBackTo: 'Main'
             }

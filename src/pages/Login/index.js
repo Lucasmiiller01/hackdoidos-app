@@ -22,12 +22,12 @@ const styles = StyleSheet.create({
     opacity: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: '#CCC',
+    backgroundColor: '#FFF',
     flex: 2,
 
   },
   map: {
-    opacity: 0.3,
+    opacity: 0.1,
     ...StyleSheet.absoluteFillObject
   },
 });
@@ -175,7 +175,7 @@ class formLogin extends Component {
       <View style={styles.container}>
 
         <View style={{ alignSelf: "center", marginTop: 40, zIndex: 22, opacity: 1 }}>
-          <Text style={{ fontSize: 30 }}>Arbo Viroses</Text>
+          <Text style={{ fontSize: 30, color: "#4c88d6" }}>Arbo Viroses</Text>
         </View>
 
       

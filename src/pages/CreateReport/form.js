@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import {useDispatch} from 'react-redux';
 
-import {View, StyleSheet, Image, Dimensions} from 'react-native';
+import {View, StyleSheet, Image, Dimensions, TouchableOpacity} from 'react-native';
 
 import {Button, Text} from 'react-native-paper';
 
@@ -49,9 +49,9 @@ const FormCreateReport = ({submitting, handleSubmit, coordinate, navigation}) =>
         
         {image ? 
           <Image  source={{ uri: image.uri }} style={styles.preview} /> :
-          <View style={[styles.preview, styles.previewDefault]}>
+          <TouchableOpacity style={[styles.preview, styles.previewDefault]} onPress={() => navigation.goBack()}>
             <Icon name="camera-alt" size={80} color="#EEE" />
-          </View>
+          </TouchableOpacity>
         }
 
         <View style={{ marginTop: 10 }} />

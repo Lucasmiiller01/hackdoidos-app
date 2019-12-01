@@ -22,6 +22,7 @@ import CreateOccurrenceScreen from './pages/CreateReport/form'
 
 import Login from './pages/Login';
 import PageInfo from './pages/PageInfo';
+import PageInfo2 from './pages/PageInfo/adverte';
 
 
 const MainStack = createStackNavigator({
@@ -105,7 +106,8 @@ const Routes = createAppContainer(
       SymptomsScreen2,
       SymptomsScreen3,
       SymptomsScreen4,
-      SymptomsScreenEnd
+      SymptomsScreenEnd,
+      PageInfo2
 
     },
     {

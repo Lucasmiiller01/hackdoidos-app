@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import {View, StyleSheet, Dimensions} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 import { connect } from 'react-redux';
 
-import { Text, Button } from 'react-native-paper';
-
-import FormCreateReport from './form';
-import {ScrollView} from 'react-native-gesture-handler';
+import { Text } from 'react-native-paper';
 
 import { RNCamera } from 'react-native-camera';
 
 import { FAB } from 'react-native-paper';
-
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import { NavigationActions } from 'react-navigation';
 
 class CreateReport extends Component {
 
@@ -39,17 +33,20 @@ class CreateReport extends Component {
     this.setState({ showed: false });
   }
 
+  redirectToForm = (data = null) => {
+    this.props.navigation.navigate({
+      routeName: 'CreateOccurrenceForm',
+      params: {
+        image: data
+      }
+    })
+  }
+
   takePictureAndRedirectToForm = async() => {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
-      
-      this.props.navigation.navigate({
-        routeName: 'CreateOccurrenceForm',
-        params: {
-          image: data
-        }
-      })
+      this.redirectToForm(data);
     }
   };
 
@@ -82,7 +79,7 @@ class CreateReport extends Component {
             />  
 
             <View style={styles.containerButtonSnap}>
-              <FAB onPress={this.takePicture} style={styles.capture} icon="format-text"/>
+              <FAB onPress={() => this.redirectToForm()} style={styles.capture} icon="format-text"/>
               <FAB onPress={this.takePictureAndRedirectToForm} style={styles.capture} icon="camera"/>
             </View>
           </>

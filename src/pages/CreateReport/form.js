@@ -1,11 +1,12 @@
-import React, {useCallback} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React from 'react';
+import {useDispatch} from 'react-redux';
 
 import {View, StyleSheet, Image, Dimensions} from 'react-native';
 
 import {Button, Text} from 'react-native-paper';
 
-import inputRedux from '../../shared/form/inputRedux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import SelectDialogRedux from '../../shared/form/selectRedux';
 
 import {reduxForm, Field} from 'redux-form';
@@ -44,9 +45,15 @@ const FormCreateReport = ({submitting, handleSubmit, coordinate, navigation}) =>
       <Text style={styles.title}>
         Confirmação
       </Text>
+
       <View style={ styles.root }>
         
-        {image && <Image  source={{ uri: image.uri }} style={styles.preview} />}
+        {image ? 
+          <Image  source={{ uri: image.uri }} style={styles.preview} /> :
+          <View style={[styles.preview, styles.previewDefault]}>
+            <Icon name="camera-alt" size={80} color="#EEE" />
+          </View>
+        }
 
         <View style={{ marginTop: 10 }} />
         <Field
@@ -59,7 +66,7 @@ const FormCreateReport = ({submitting, handleSubmit, coordinate, navigation}) =>
         <View style={{ marginTop: 10 }} />
 
         <Button loading={submitting} disabled={submitting} mode="contained"
-          style={{ marginBottom: 6 }} >
+          style={{ marginBottom: 6, marginTop: 10, backgroundColor: '#4c88d6' }} >
           {submitting ? 'Enviando' : 'Enviar'}
         </Button>
       </View>
@@ -81,6 +88,13 @@ const styles = StyleSheet.create({
   preview: {
     width: Dimensions.get('window').width - 20,
     height: Dimensions.get('window').width - 140
+  },
+
+  previewDefault: {
+    backgroundColor: '#7e7e7e',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#4d000000'
   },
 
   title: { textAlign: 'center', fontSize: 20, color: '#707070', paddingTop: 20, paddingBottom: 10 }

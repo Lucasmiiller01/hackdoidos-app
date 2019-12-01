@@ -55,7 +55,7 @@ const Main = ({ navigation }) => {
           rotateEnabled={false}
           loadingEnabled={true}
           zoomEnabled={true}
-          mapType="satellite"
+          //mapType="satellite"
           toolbarEnabled={false}
           initialRegion={INITIAL_REGION}>
         </MapView>

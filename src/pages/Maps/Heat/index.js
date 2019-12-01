@@ -21,28 +21,7 @@ class HeatMap extends PureComponent {
   componentWillUnmount() {
     clearInterval(this.intervalID);
   }
-  /*  state = {
-        tracksViewChanges: true
-    }
-    getSnapshotBeforeUpdate(nextProps) {
-        const { postsPointsData } = this.props;
-
-        if (postsPointsData.length > 0 && this.props != nextProps) {
-            this.setState({
-                tracksViewChanges: true,
-            })
-        }
-    }
-    componentDidUpdate() {
-        const { postsPointsData } = this.props;
-
-        if (postsPointsData.length > 0 && this.state.tracksViewChanges) {
-            this.setState({
-                tracksViewChanges: false,
-            })
-        }
-    }*/
-
+  
     render() {
         const { reports } = this.props;
         const points = reports && reports.length > 0 && reports.map(item =>  {

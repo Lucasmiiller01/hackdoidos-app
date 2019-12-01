@@ -1,3 +1,4 @@
+import React from 'react'
 import { Image } from 'react-native'
 import PhotoUpload from 'react-native-photo-upload'
 
@@ -5,11 +6,13 @@ export default ({ }) => {
 
     return (
         <PhotoUpload
+            photoPickerTitle="Escolha uma opção"
             onPhotoSelect={avatar => {
                 if (avatar) {
                     console.log('Image base64 string: ', avatar)
                 }
             }}
+            quality={50}
         >
             <Image
                 style={{

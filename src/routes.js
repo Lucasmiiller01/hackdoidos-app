@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import MainScreen from './pages/Main';
 import ProfileScreen from './pages/Profile';
 import ReportsScreen from './pages/Reports';
-import CreateReport from './pages/CreateOccurrence';
+import CreateOccurrence from './pages/CreateOccurrence';
 
 import Login from './pages/Login';
 
@@ -22,18 +22,27 @@ const MainStack = createStackNavigator({
       header: null
     }
   },
-  CreateReport: {
-    screen: CreateReport,
-    navigationOptions: {
-      header: null
-    }
-  }
 }, {
-  mode: 'modal',
   navigationOptions: {
     tabBarLabel: <Text style={{ textAlign: 'center' }}>Mapa</Text>,
     tabBarIcon: ({ tintColor }) => (
       <Icon name="map" size={24} color={tintColor} />
+    ),
+  },
+})
+
+const CreateOccurrenceStack = createStackNavigator({
+  Main: {
+    screen: CreateOccurrence,
+    navigationOptions: {
+      header: null
+    }
+  },
+}, {
+  navigationOptions: {
+    tabBarLabel: <Text style={{ textAlign: 'center' }}>Ocorrências</Text>,
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name="description" size={24} color={tintColor} />
     ),
   },
 })
@@ -49,15 +58,7 @@ const PrivateStack = createMaterialBottomTabNavigator(
         ),
       },
     },
-    Reports: {
-      screen: ReportsScreen,
-      navigationOptions: {
-        tabBarLabel: <Text style={{ textAlign: 'center' }}>Ocorrências</Text>,
-        tabBarIcon: ({ tintColor }) => (
-          <Icon name="description" size={24} color={tintColor} />
-        ),
-      },
-    },
+    Reports: CreateOccurrenceStack,
     Main: MainStack,
     Profile: {
       screen: ProfileScreen,

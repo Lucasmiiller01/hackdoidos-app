@@ -13,7 +13,7 @@ function* getReports() {
   try {
     const {data} = yield call(services.allReports);
 
-    if (!data.hasOwnProperty('alert')) {
+    if (data) {
       yield put({type: types.SET_REPORTS, payload: data});
     } else {
       yield put({type: types.SET_REPORTS, payload: []});

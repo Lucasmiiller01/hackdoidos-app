@@ -1,8 +1,6 @@
 import api from "./api";
 
-export const allReports = () =>
-    api().get("events");
-
+export const allReports = () => api().get("events");
 
 export const createReport = ({ type_event_id, lat, lng, image = null }) => {
 

@@ -8,6 +8,31 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 import { useSelector } from 'react-redux'
 
+const Main = ({ navigation }) => {
+
+  const currentPosition = useSelector(state => state.auth.initialPosition);
+
+  console.log({ currentPosition })
+
+  return (
+    <Portal.Host>
+      <View style={styles.container}>
+        <MapView
+          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+          style={styles.map}
+          rotateEnabled={false}
+          loadingEnabled={true}
+          zoomEnabled={true}
+          //mapType="satellite"
+          toolbarEnabled={false}
+          initialRegion={INITIAL_REGION}>
+        </MapView>
+      </View>
+    </Portal.Host>
+  );
+};
+
+
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
@@ -40,28 +65,6 @@ const INITIAL_REGION = {
   longitude: -43.365654,
   latitudeDelta: 0.05,
   longitudeDelta: 0.05,
-};
-
-const Main = ({ navigation }) => {
-
-  const openModal = useSelector(state => state.main.openModal);
-
-  return (
-    <Portal.Host>
-      <View style={styles.container}>
-        <MapView
-          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-          style={{ ...styles.map, zIndex: openModal ? -1 : 1 }}
-          rotateEnabled={false}
-          loadingEnabled={true}
-          zoomEnabled={true}
-          //mapType="satellite"
-          toolbarEnabled={false}
-          initialRegion={INITIAL_REGION}>
-        </MapView>
-      </View>
-    </Portal.Host>
-  );
 };
 
 export default Main;

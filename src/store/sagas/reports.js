@@ -5,7 +5,8 @@ import * as services from '../../services/reports';
 
 import {startSubmit, stopSubmit} from 'redux-form';
 import { snackbarShowError, snackbarShowSuccess } from '../ducks/snackbar';
-import { NavigationActions } from 'react-navigation';
+
+import { getUserLocation } from '../../services/auth';
 
 function* getReports() {
   try {
@@ -44,7 +45,25 @@ function* fetchNewReport({payload}) {
   yield put(startSubmit('FORM_CREATE_REPORT'));
 
   try {
-    const { data } = yield call(services.createReport, payload);
+   // yield call(requestLocationPermission);
+    let locationCoord = null;
+
+    try {
+      const location = yield call(getUserLocation);
+
+      //const { latitude, longitude } = location.coords;
+      locationCoord = location.coords;
+     
+    } catch (error) {
+      yield put(
+        snackbarShow(
+          'Ocorreu um erro ao tentar recuperar localizaçao, por favor ative seu GPS.',
+        ),
+      );
+      errorLocation = true;
+    }
+
+   /* const { data } = yield call(services.createReport, payload);
 
     if(data === 'error') {
       yield put(snackbarShowError('Ocorre um erro ao cadastrar a denuncia.'));
@@ -56,9 +75,10 @@ function* fetchNewReport({payload}) {
         put({ type: types.ASYNC_MY_REPORTS }),
         put({ type: types.ASYNC_REPORTS })
       ]);
-    }
+    }*/
 
   } catch (err) {
+    console.log(err.message);
     yield put(snackbarShowError('Ocorre um erro ao cadastrar a denuncia.'));
   } finally {
     yield put(stopSubmit('FORM_CREATE_REPORT'));

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {useDispatch} from 'react-redux';
 
 import {View, StyleSheet, Image, Dimensions} from 'react-native';
@@ -29,14 +29,13 @@ const FormCreateReport = ({submitting, handleSubmit, coordinate, navigation}) =>
   const image = navigation.getParam('image');
 
   const dispatch = useDispatch();
-  // const submitCreateReport = useCallback((values) => dispatch(
-  //   createReport({
-  //     ...values,
-  //     x_coord: coordinate.latitude,
-  //     y_coord: coordinate.longitude,
-  //     layer_name: values.layer_name || ''
-  //   })
-  // ), [dispatch]);
+  const submitCreateReport = useCallback((values) => dispatch(
+     createReport({
+      ...values,
+
+      image: image || ''
+     })
+   ), [dispatch]);
   
 
   return (
@@ -66,6 +65,7 @@ const FormCreateReport = ({submitting, handleSubmit, coordinate, navigation}) =>
         <View style={{ marginTop: 10 }} />
 
         <Button loading={submitting} disabled={submitting} mode="contained"
+        onPress={() => submitCreateReport()}
           style={{ marginBottom: 6, marginTop: 10, backgroundColor: '#4c88d6' }} >
           {submitting ? 'Enviando' : 'Enviar'}
         </Button>

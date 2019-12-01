@@ -15,6 +15,8 @@ import CreateOccurrenceCameraScreen from './pages/CreateReport';
 import CreateOccurrenceScreen from './pages/CreateReport/form'
 
 import Login from './pages/Login';
+import PageInfo from './pages/PageInfo';
+
 
 const MainStack = createStackNavigator({
   Main: {
@@ -92,6 +94,7 @@ const Routes = createAppContainer(
     {
       Login,
       PrivateStack,
+      PageInfo
     },
     {
       initialRouteName: 'Login',

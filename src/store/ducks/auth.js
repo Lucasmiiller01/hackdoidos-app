@@ -5,13 +5,15 @@ export const types = {
     ASYNC_LOAD_AUTHENTICATE: "ASYNC_LOAD_AUTHENTICATE",
     ASYNC_LOGOUT: "ASYNC_LOGOUT",
 
-
+    INITIAL_POSITION_LOADED: 'INITIAL_POSITION_LOADED'
 }
 
 const INITIAL_STATE = {
     data: null,
     loaded: false,
-    error: false
+    error: false,
+
+    initialPosition: null
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -20,6 +22,8 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, loaded: true, error: false, data: action.payload };
         case types.LOGIN_ERROR:
             return { ...state, loaded: true, error: true };
+        case types.INITIAL_POSITION_LOADED:
+            return { ...state, initialPosition: action.payload };
         default:
             return { ...state }
     }

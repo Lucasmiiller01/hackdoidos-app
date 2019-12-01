@@ -3,6 +3,7 @@ import {types} from '../ducks/auth';
 import * as service from '../../services/auth';
 import {startSubmit, stopSubmit} from 'redux-form';
 import {NavigationActions} from 'react-navigation';
+import { PermissionsAndroid } from 'react-native';
 import {snackbarShowError, snackbarShow} from '../ducks/snackbar';
 
 import { Keyboard } from 'react-native';
@@ -62,8 +63,36 @@ function* logout() {
   }
 }
 
+/*function* requestLocationPermission() {
+  try {
+
+    console.log("STARTED")
+    const granted = yield call(
+      PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      ),
+    );
+
+    console.log({ granted });
+
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      const location = yield call(service.getUserLocation);
+
+      console.log({ location })
+      yield put({ type: types.INITIAL_POSITION_LOADED, payload: location.coord })
+      return true;
+    } else {
+      return false;
+    }
+  } catch (err) {
+    console.log({ err })
+    return false;
+  }
+}*/
+
 export default function* rootSaga() {
 
+ // yield call(requestLocationPermission)
   yield call(loadAuthenticate)
 
   yield all([

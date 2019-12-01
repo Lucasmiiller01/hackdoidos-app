@@ -6,7 +6,6 @@ import authReducer from './auth';
 import mainReducer from './main';
 
 import snackReducer from './snackbar';
-import layersReducer from './layers';
 
 import reportsReducer from './reports';
 
@@ -22,7 +21,6 @@ const reducers = combineReducers({
   auth: authReducer,
   snackbar: snackReducer,
   main: mainReducer,
-  layers: layersReducer,
   reports: reportsReducer,
 });
 

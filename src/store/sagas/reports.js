@@ -13,8 +13,8 @@ function* getReports() {
   try {
     const {data} = yield call(services.allReports);
 
-    if (data) {
-      yield put({type: types.SET_REPORTS, payload: data});
+    if (data && data.events) {
+      yield put({type: types.SET_REPORTS, payload: data.events});
     } else {
       yield put({type: types.SET_REPORTS, payload: []});
     }
@@ -40,8 +40,7 @@ function* fetchNewReport({payload}) {
         snackbarShow( 'Ocorreu um erro ao tentar recuperar localizaçao, por favor ative seu GPS.', ),
       );
     }
-
-    yield call(services.createReport, { ...locationCoord,...payload });
+    yield call(services.createReport, { ...locationCoord, ...payload });
 
     yield all([
       put(snackbarShowSuccess('Ocorrencia criada com sucesso')),
@@ -49,8 +48,6 @@ function* fetchNewReport({payload}) {
     ]);
 
   } catch (err) {
-
-    console.log(err.message)
     yield put(snackbarShowError('Ocorre um erro ao cadastrar a ocorrencia.'));
   } finally {
     yield put(stopSubmit('FORM_CREATE_REPORT'));

@@ -24,26 +24,10 @@ class Profile extends Component {
     return (
       <View style={styles.container}>
         <Appbar.Header dark={true}>
-          <Appbar.Content title="Perfil" />
+          <Appbar.Content title="Sintomas" />
           <Appbar.Action icon="exit-to-app" onPress={() => this.props.logout()} />
-
         </Appbar.Header>
-        {loaded && !error ? (
-          <>
-            <Avatar.Image
-              style={{ alignSelf: 'center', marginVertical: 20 }}
-              size={100}
-              source={sourceEmptyProfile}
-            />
-
-            <Text style={{ fontSize: 20, textAlign: 'center' }}>{profile.name}</Text>
-            
-          </>
-        ) : (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-              <Text>{error ? 'Erro ao carregar as informações' : 'Carregando...'}</Text>
-            </View>
-          )}
+        
       </View>
     );
   }

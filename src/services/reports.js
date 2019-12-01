@@ -10,7 +10,7 @@ export const createReport = ({ type_event_id, lat, lng, image = null }) => {
   data.append('lng', lng);
   data.append('type_event_id', type_event_id);
 
-  data.append('image', image ? {
+  image &&  data.append('image', image ? {
     uri: image.uri,
     type: 'image/jpeg',
     name: 'imagem' + '.jpg'

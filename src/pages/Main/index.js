@@ -4,6 +4,8 @@ import { View, StyleSheet } from 'react-native';
 
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import MarkerPostsPoints from "../Maps/Point/posts";
+import HeatMap from "../Maps/Heat";
+
 
 import Geolocation from '@react-native-community/geolocation'
 
@@ -46,7 +48,7 @@ class Main extends Component {
           initialRegion={this.state.position}>
 
           <MarkerPostsPoints />
-
+          <HeatMap/>
         </MapView>
       </View>
     )

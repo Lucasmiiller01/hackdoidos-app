@@ -5,14 +5,15 @@ import { Fab, Icon } from 'native-base';
 import { Paragraph, Portal } from 'react-native-paper';
 
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MarkerPostsPoints from "../Maps/Point/posts";
 
 import { useSelector } from 'react-redux'
 
 const Main = ({ navigation }) => {
 
-  const currentPosition = useSelector(state => state.auth.initialPosition);
+  // const currentPosition = useSelector(state => state.auth.initialPosition);
 
-  console.log({ currentPosition })
+  // console.log({ currentPosition })
 
   return (
     <Portal.Host>
@@ -26,6 +27,9 @@ const Main = ({ navigation }) => {
           //mapType="satellite"
           toolbarEnabled={false}
           initialRegion={INITIAL_REGION}>
+
+          <MarkerPostsPoints />
+
         </MapView>
       </View>
     </Portal.Host>

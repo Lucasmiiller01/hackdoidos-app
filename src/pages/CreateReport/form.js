@@ -29,11 +29,11 @@ const FormCreateReport = ({submitting, handleSubmit, coordinate, navigation}) =>
   const image = navigation.getParam('image');
 
   const dispatch = useDispatch();
+  
   const submitCreateReport = useCallback((values) => dispatch(
      createReport({
       ...values,
-
-      image: image || ''
+      image: image || null
      })
    ), [dispatch]);
   
@@ -64,8 +64,7 @@ const FormCreateReport = ({submitting, handleSubmit, coordinate, navigation}) =>
         />
         <View style={{ marginTop: 10 }} />
 
-        <Button loading={submitting} disabled={submitting} mode="contained"
-        onPress={() => submitCreateReport()}
+        <Button loading={submitting} disabled={submitting} mode="contained" onPress={handleSubmit(submitCreateReport)}
           style={{ marginBottom: 6, marginTop: 10, backgroundColor: '#4c88d6' }} >
           {submitting ? 'Enviando' : 'Enviar'}
         </Button>

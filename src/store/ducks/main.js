@@ -3,12 +3,15 @@ export const types = {
     ASYNC_ADD_SELECTED_LAYER: "ASYNC_ADD_SELECTED_LAYER",
     ASYNC_REMOVE_SELECTED_LAYER: "ASYNC_REMOVE_SELECTED_LAYER",
     ADD_SELECTED_LAYER: "ADD_SELECTED_LAYER",
+    ASYNC_GET_ALL_POSTS: "ASYNC_GET_ALL_POSTS",
     REMOVE_SELECTED_LAYER: "REMOVE_SELECTED_LAYER"
+
 }
 
 const INITIAL_STATE = {
     openModal: false,
-    layers: []
+    layers: [],
+    postsPointsData: [{lat: -22.880181, lng: -43.231250}]
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -32,6 +35,8 @@ export default (state = INITIAL_STATE, action) => {
 }
 
 export const changeModal = payload => ({ type: types.CHANGE_MODAL_DRAWER, payload });
+export const getAllPoints = payload => ({ type: types.CHANGE_MODAL_DRAWER, payload });
+
 export const addLayer = payload => ({ type: types.ASYNC_ADD_SELECTED_LAYER, payload });
 export const removeLayer = payload => ({ type: types.ASYNC_REMOVE_SELECTED_LAYER, payload });
 

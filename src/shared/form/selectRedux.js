@@ -41,6 +41,11 @@ export default class SelectDialogRedux extends PureComponent {
 
     return (
       <View>
+
+        {/* <View style={{ border: '1px solid #CCC' }} onPress={this.show}>
+          <Text style={styles.selectText}>{this.label()}</Text>
+        </View> */}
+
         <Button
           mode="contained"
           color="#DDD"
@@ -48,7 +53,7 @@ export default class SelectDialogRedux extends PureComponent {
           onPress={this.show}
           style={styles.select}
         >
-          <Text style={styles.selectText}>{this.label()}</Text>
+           <Text style={styles.selectText}>{this.label()}</Text>
         </Button>
 
         <Portal>
@@ -103,7 +108,7 @@ const styles = StyleSheet.create({
     fontWeight: "normal"
   },
   contentSelectScrollArea: {
-    maxHeight: 280,
+    maxHeight: 320,
     paddingHorizontal: 0,
     paddingBottom: 10,
   },

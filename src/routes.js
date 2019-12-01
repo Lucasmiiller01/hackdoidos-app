@@ -11,7 +11,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import MainScreen from './pages/Main';
 import ProfileScreen from './pages/Profile';
 import ReportsScreen from './pages/Reports';
-import CreateOccurrence from './pages/CreateOccurrence';
+import CreateOccurrenceCameraScreen from './pages/CreateReport';
+import CreateOccurrenceScreen from './pages/CreateReport/form'
 
 import Login from './pages/Login';
 
@@ -32,17 +33,23 @@ const MainStack = createStackNavigator({
 })
 
 const CreateOccurrenceStack = createStackNavigator({
-  Main: {
-    screen: CreateOccurrence,
+  CreateOccurrenceCamera: {
+    screen: CreateOccurrenceCameraScreen,
     navigationOptions: {
       header: null
     }
   },
+  CreateOccurrenceForm: {
+    screen: CreateOccurrenceScreen,
+    navigationOptions: {
+      header: null
+    }
+  }
 }, {
   navigationOptions: {
-    tabBarLabel: <Text style={{ textAlign: 'center' }}>Ocorrências</Text>,
+    tabBarLabel: <Text style={{ textAlign: 'center' }}>Reporte</Text>,
     tabBarIcon: ({ tintColor }) => (
-      <Icon name="description" size={24} color={tintColor} />
+      <Icon name="camera-alt" size={24} color={tintColor} />
     ),
   },
 })
@@ -72,7 +79,7 @@ const PrivateStack = createMaterialBottomTabNavigator(
   },
   {
     initialRouteName: 'Main',
-    activeColor: '#4c88d6',//#4c88d6
+    activeColor: '#4c88d6',
     inactiveColor: '#666',
     barStyle: {
       backgroundColor: '#FFF',

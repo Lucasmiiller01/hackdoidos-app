@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { View, StyleSheet } from 'react-native';
 
-import { Appbar, Avatar, Text, Button } from 'react-native-paper';
+import { Appbar, Avatar, Text } from 'react-native-paper';
 
 import { connect } from 'react-redux';
 import { logout } from '../../store/ducks/auth'

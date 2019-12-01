@@ -4,10 +4,7 @@ import { Appbar } from 'react-native-paper';
 import { logout } from '../../store/ducks/auth'
 import { connect } from 'react-redux';
 
-
-
 class Reports extends Component {
-
 
   render() {
     return (

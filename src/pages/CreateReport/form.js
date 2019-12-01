@@ -1,0 +1,91 @@
+import React, {useCallback} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+
+import {View, StyleSheet, Image, Dimensions} from 'react-native';
+
+import {Button, Text} from 'react-native-paper';
+
+import inputRedux from '../../shared/form/inputRedux';
+import SelectDialogRedux from '../../shared/form/selectRedux';
+
+import {reduxForm, Field} from 'redux-form';
+import { createReport } from '../../store/ducks/createReports';
+
+const getOptionsSelect = () => {
+  return [
+    { value: 1, label: 'Pneus'},
+    { value: 2, label: 'Caixa D\'água, Cisterna, balde'},
+    { value: 3, label: 'Lixo doméstico'},
+    { value: 4, label: 'Ferro velho, Terreno Baldio'},
+    { value: 5, label: 'Esgoto à céu aberto'},
+    { value: 6, label: 'Plantas, Folhas, Troncos'},
+    { value: 7, label: 'Outros'},
+  ];
+}
+
+const FormCreateReport = ({submitting, handleSubmit, coordinate, navigation}) => {
+
+  const image = navigation.getParam('image');
+
+  const dispatch = useDispatch();
+  // const submitCreateReport = useCallback((values) => dispatch(
+  //   createReport({
+  //     ...values,
+  //     x_coord: coordinate.latitude,
+  //     y_coord: coordinate.longitude,
+  //     layer_name: values.layer_name || ''
+  //   })
+  // ), [dispatch]);
+  
+
+  return (
+    <View style={styles.container}>
+
+      <Text style={styles.title}>
+        Confirmação
+      </Text>
+      <View style={ styles.root }>
+        
+        {image && <Image  source={{ uri: image.uri }} style={styles.preview} />}
+
+        <View style={{ marginTop: 10 }} />
+        <Field
+          name="type_event_id"
+          label="Tipo de Criadouro"
+          dialogTitle="Selecione um Tipo de Criadouro"
+          options={getOptionsSelect()}
+          component={SelectDialogRedux}
+        />
+        <View style={{ marginTop: 10 }} />
+
+        <Button loading={submitting} disabled={submitting} mode="contained"
+          style={{ marginBottom: 6 }} >
+          {submitting ? 'Enviando' : 'Enviar'}
+        </Button>
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  root: {
+    backgroundColor: '#FFF',
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    flex: 1,
+  },
+
+  preview: {
+    width: Dimensions.get('window').width - 20,
+    height: Dimensions.get('window').width - 140
+  },
+
+  title: { textAlign: 'center', fontSize: 20, color: '#707070', paddingTop: 20, paddingBottom: 10 }
+});
+
+export default reduxForm({
+  form: 'FORM_CREATE_REPORT',
+})(FormCreateReport);

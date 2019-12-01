@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Dimensions} from 'react-native';
 
 import { connect } from 'react-redux';
 
-import { Text } from 'react-native-paper';
+import { Text, Button } from 'react-native-paper';
 
-import FormCreateOccurrence from './form';
+import FormCreateReport from './form';
 import {ScrollView} from 'react-native-gesture-handler';
 
 import { RNCamera } from 'react-native-camera';
-//import UploadImage from '../../components/UploadImage';
 
-class CreateOccurrence extends Component {
+import { FAB } from 'react-native-paper';
+
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { NavigationActions } from 'react-navigation';
+
+class CreateReport extends Component {
 
   camera; 
 
@@ -27,7 +31,7 @@ class CreateOccurrence extends Component {
     this.setState({ showed: this.props.navigation.isFocused() });
   }
 
-  shouldComponentUpdate = (nextProps, nextState) => {
+  shouldComponentUpdate = () => {
     return this.state.showed !== this.props.navigation.isFocused();
   }
 
@@ -35,31 +39,39 @@ class CreateOccurrence extends Component {
     this.setState({ showed: false });
   }
 
-  takePicture = async() => {
+  takePictureAndRedirectToForm = async() => {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
-
-      console.log(data.base64);
+      
+      this.props.navigation.navigate({
+        routeName: 'CreateOccurrenceForm',
+        params: {
+          image: data
+        }
+      })
     }
   };
 
   render() {
-
-    console.log(this.state.showed);
     
     return (
       <View style={styles.root}>
 
         {this.state.showed && (
           <>
+
+            <Text style={styles.title}>
+              Registre o Criadouro
+            </Text>
+            
             <RNCamera
               ref={ref => {
                 this.camera = ref;
               }}
               style={styles.preview}
               type={RNCamera.Constants.Type.back}
-              flashMode={RNCamera.Constants.FlashMode.on}
+              flashMode={RNCamera.Constants.FlashMode.auto}
               androidCameraPermissionOptions={{
                 title: 'Permissão para usar câmera',
                 message: 'Nós precisamos de acessa a sua câmera para você registrar a ocorrência com uma imagem anexada.',
@@ -69,10 +81,9 @@ class CreateOccurrence extends Component {
               
             />  
 
-            <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }}>
-              <TouchableOpacity onPress={this.takePicture} style={styles.capture}>
-                <Text style={{ fontSize: 14 }}> SNAP </Text>
-              </TouchableOpacity>
+            <View style={styles.containerButtonSnap}>
+              <FAB onPress={this.takePicture} style={styles.capture} icon="format-text"/>
+              <FAB onPress={this.takePictureAndRedirectToForm} style={styles.capture} icon="camera"/>
             </View>
           </>
         )}
@@ -87,14 +98,14 @@ class CreateOccurrence extends Component {
           </Appbar.Header>
     
           <ScrollView>
-            <FormCreateOccurrence  />
+            <FormCreateReport  />
           </ScrollView> */}
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: 'black',
+    backgroundColor: 'white',
   },
   preview: {
     flex: 1,
@@ -103,17 +114,16 @@ const styles = StyleSheet.create({
   },
   capture: {
     flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    padding: 15,
-    paddingHorizontal: 20,
     alignSelf: 'center',
-    margin: 20,
+    margin: 10,
   },
+
+  containerButtonSnap: { flex: 0, flexDirection: 'row', justifyContent: 'center', position: 'absolute', left: 0, bottom: 10, right: 0 },
+  title: { position: 'absolute', top: 0, left: 0, right: 0, textAlign: 'center', zIndex: 999, fontSize: 20, color: '#F9F9F9', backgroundColor: '#202020aa', paddingVertical: 5 }
 });
 
 const mapStateToProps = state => ({
   nav: state.nav
 });
 
-export default connect(mapStateToProps)(CreateOccurrence);
+export default connect(mapStateToProps)(CreateReport);
